@@ -27,7 +27,7 @@ function NoteList(props) {
         {getComposeButton()}
       </div>
       <div className={styles.searchContainer}>
-        <input className={styles.search} placeholder="Search"></input>
+        <input className={styles.search} placeholder="Search" onChange={(e)=>props.onSearchQuery(e.target.value)}></input>
       </div>
 
       <div className={styles.listGroup}>

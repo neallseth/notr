@@ -24,6 +24,7 @@ function EditingPanel(props) {
             placeholder="Edit title..."
             value={props.item.title}
             onChange={onTitleChange}
+            maxlength="13"
           ></input>
           <textarea
             className={styles.contentInput}

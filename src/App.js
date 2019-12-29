@@ -37,6 +37,16 @@ class App extends React.Component {
     ]
   };
 
+  handleSearchQuery(query) {
+    console.log("query: ", query)
+    this.setState(prevState => {
+      const filtered = prevState.notes.filter(item => {
+        console.log(item.title.toUpperCase().search(query.toUpperCase()) || item.contents.toUpperCase().search(query.toUpperCase()))
+        return item.title.toUpperCase().search(query.toUpperCase()) || item.contents.toUpperCase().search(query.toUpperCase())
+      })
+      return { notes: filtered }
+    })
+  }
 
   handleItemClick(newActiveID) {
     this.setState({ activeID: newActiveID });
@@ -56,7 +66,7 @@ class App extends React.Component {
       const maxID = prevState.notes.reduce((prev, current) => prev.id > current.id ? prev.id : current.id)
       const newItem = { id: maxID + 1, title: "", contents: "", date: new Date().toLocaleDateString() }
       const newNotes = [newItem, ...prevState.notes]
-      return {notes: newNotes};
+      return { notes: newNotes };
     })
   }
 
@@ -95,6 +105,7 @@ class App extends React.Component {
             <div className="col-lg-3 col-md-4 col-sm-5 col-xs-6">
               <NoteList
                 items={this.state.notes}
+                onSearchQuery={this.handleSearchQuery.bind(this)}
                 onItemClick={this.handleItemClick.bind(this)}
                 onItemDelete={this.handleItemDelete.bind(this)}
                 onItemCreate={this.handleItemCreate.bind(this)}
