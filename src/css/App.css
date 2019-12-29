@@ -1,0 +1,14 @@
+.App {
+  background-color: var(--themePrimary);
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+:root {
+  --themePrimary: #282c34;
+  --themeSecondary: #505661;
+  --themeTertiary: #7952b3;
+  --themeAccent: rgba(121, 82, 179, 0.25);
+  --borderRadius: 0.35rem;
+}

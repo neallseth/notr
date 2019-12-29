@@ -1,0 +1,13 @@
+order notes in descending order by date (create animation to re-order)
+
+fix height of note items (uniformity)
+
+add search functionality for note items
+
+add search icon to input box
+
+functionality to compose new notes
+
+placeholder to in panel view when no notes exist
+
+option buttons across top of list sidebar for hamburger, compose, delete, and save (to DB), settings
