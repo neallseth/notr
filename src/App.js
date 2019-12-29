@@ -51,6 +51,15 @@ class App extends React.Component {
     this.setFirstItemActive();
   }
 
+  handleItemCreate() {
+    this.setState(prevState => {
+      const maxID = prevState.notes.reduce((prev, current) => prev.id > current.id ? prev.id : current.id)
+      const newItem = { id: maxID + 1, title: "", contents: "", date: new Date().toLocaleDateString() }
+      const newNotes = [newItem, ...prevState.notes]
+      return {notes: newNotes};
+    })
+  }
+
   handleNoteEdit(newItem) {
     this.setState(prevState => {
       let notes = [...prevState.notes];
@@ -65,7 +74,7 @@ class App extends React.Component {
   setFirstItemActive() {
     if (this.state.notes.length > 0) {
       this.setState(prevState => {
-        return { activeID: prevState.notes[0].id};
+        return { activeID: prevState.notes[0].id };
       });
     }
   }
@@ -88,6 +97,7 @@ class App extends React.Component {
                 items={this.state.notes}
                 onItemClick={this.handleItemClick.bind(this)}
                 onItemDelete={this.handleItemDelete.bind(this)}
+                onItemCreate={this.handleItemCreate.bind(this)}
                 activeID={this.state.activeID}
               ></NoteList>
             </div>

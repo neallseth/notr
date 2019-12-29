@@ -10,6 +10,16 @@ function NoteListItem(props) {
     }
   }
 
+  function getItemTitle(title) {
+    if (title){
+      return <h5 className={styles.itemTitle}>{props.item.title}</h5>
+    }
+    else{
+      return <h5 style={{ fontStyle: "italic" }} className={styles.itemTitle}>No Title</h5>
+    }
+
+  }
+
   function getItemContents(contents) {
     if (contents) {
       return <p className={styles.listItemText}>{contents}</p>;
@@ -23,18 +33,17 @@ function NoteListItem(props) {
   }
 
   return (
-    <a
+    <div
       role="button"
       onClick={() => props.onItemClick(props.item.id)}
-      href="#"
       className={getClass(props.item.id)}
     >
       <div className={styles.itemTitleRow}>
-        <h5 className={styles.itemTitle}>{props.item.title}</h5>
+        {getItemTitle(props.item.title)}
         <span className={styles.itemDate}>{props.item.date}</span>
       </div>
       {getItemContents(props.item.contents)}
-    </a>
+    </div>
   );
 }
 

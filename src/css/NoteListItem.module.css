@@ -15,6 +15,7 @@
   color: lightgray;
   padding: 0.75rem 1.25rem;
   height: 5.5rem;
+  cursor: pointer;
 }
 
 .listItem:first-child {
@@ -51,4 +52,34 @@
 
 .itemTitle {
   margin: 0;
+}
+
+.slideOutLeft {
+	-webkit-animation: slideOutLeft 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+	        animation: slideOutLeft 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+}
+
+ @-webkit-keyframes slideOutLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
+}
+@keyframes slideOutLeft {
+  0% {
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: translateX(-1000px);
+            transform: translateX(-1000px);
+    opacity: 0;
+  }
 }
