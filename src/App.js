@@ -37,23 +37,18 @@ class App extends React.Component {
     ]
   };
 
-  setInitialActiveID() {
-    if (this.state.notes.length > 0) {
-      this.setState(prevState => {
-        return { activeID: prevState.notes[0].id };
-      });
-    }
-  }
 
   handleItemClick(newActiveID) {
     this.setState({ activeID: newActiveID });
   }
 
-  getActiveItem() {
-    const [item] = this.state.notes.filter(
-      item => item.id == this.state.activeID
-    );
-    return item;
+  handleItemDelete() {
+    this.setState(prevState => {
+      console.log("deleting: ", prevState.activeID);
+      const filtered = prevState.notes.filter(item => item.id !== prevState.activeID)
+      return { notes: filtered };
+    })
+    this.setFirstItemActive();
   }
 
   handleNoteEdit(newItem) {
@@ -67,11 +62,23 @@ class App extends React.Component {
     });
   }
 
+  setFirstItemActive() {
+    if (this.state.notes.length > 0) {
+      this.setState(prevState => {
+        return { activeID: prevState.notes[0].id};
+      });
+    }
+  }
+
   componentDidMount() {
-    this.setInitialActiveID();
+    this.setFirstItemActive();
   }
 
   render() {
+    const [item] = this.state.notes.filter(
+      item => item.id == this.state.activeID
+    );
+
     return (
       <div className="App">
         <div className="container-fluid px-0">
@@ -80,12 +87,13 @@ class App extends React.Component {
               <NoteList
                 items={this.state.notes}
                 onItemClick={this.handleItemClick.bind(this)}
+                onItemDelete={this.handleItemDelete.bind(this)}
                 activeID={this.state.activeID}
               ></NoteList>
             </div>
             <div className="col-lg-9 col-md-8 col-sm-7 col-xs-6">
               <EditingPanel
-                item={this.getActiveItem()}
+                item={item}
                 onNoteEdit={this.handleNoteEdit.bind(this)}
               ></EditingPanel>
             </div>

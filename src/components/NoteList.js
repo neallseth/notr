@@ -2,18 +2,15 @@ import React from "react";
 import styles from "../css/NoteList.module.css";
 import NoteListItem from "./NoteListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faEdit, faTrashAlt, faCogs } from "@fortawesome/free-solid-svg-icons";
 
 function NoteList(props) {
   return (
     <div className={styles.listContainer}>
       <div className={styles.optionBtnGroup}>
-        {/* <button className={styles.optionBtn}>Hello</button>
-        <button className={styles.optionBtn}>Its me</button>
-        <button className={styles.optionBtn}>Hola</button> */}
-        <FontAwesomeIcon icon={faTrashAlt} />
-
-        <FontAwesomeIcon icon={faEdit} />
+        <FontAwesomeIcon icon={faTrashAlt} className={styles.deleteBtn} onClick={props.onItemDelete}/>
+        <FontAwesomeIcon icon={faCogs} className={styles.optionBtns}/>
+        <FontAwesomeIcon icon={faEdit} className={styles.optionBtns}/>
       </div>
       <div className={styles.searchContainer}>
         <input className={styles.search} placeholder="Search"></input>
