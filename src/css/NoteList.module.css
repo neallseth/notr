@@ -70,20 +70,24 @@
   justify-content: space-evenly;
 }
 
-svg{
+svg {
   color: lightgrey;
   cursor: pointer;
 }
 
-.deleteBtn:hover{
-filter: drop-shadow(0 0 5px #b01617);
+.optionBtns {
+  height: 1.35em;
 }
 
-.optionBtns:hover{
+.deleteBtn:hover {
+  filter: drop-shadow(0 0 5px #b01617);
+}
+
+.optionBtns:hover {
   filter: drop-shadow(0 0 5px #5416b0);
 }
 
-.optionBtnDeactivated{
-color: grey;
-cursor: default;
+.optionBtnDeactivated {
+  color: grey;
+  cursor: default;
 }

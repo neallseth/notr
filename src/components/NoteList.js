@@ -5,29 +5,52 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrashAlt, faCogs } from "@fortawesome/free-solid-svg-icons";
 
 function NoteList(props) {
-
   function getComposeButton() {
-    if (props.items){
-      const {title, contents} = props.items[0]
-      if (title || contents){
-        return  <FontAwesomeIcon icon={faEdit} className={styles.optionBtns} onClick={props.onItemCreate} />
+    if (props.items.length) {
+      const { title, contents } = props.items[0];
+      if (title || contents) {
+        return (
+          <FontAwesomeIcon
+            icon={faEdit}
+            className={styles.optionBtns}
+            onClick={props.onItemCreate}
+          />
+        );
+      } else {
+        return (
+          <FontAwesomeIcon
+            icon={faEdit}
+            className={styles.optionBtnDeactivated}
+          />
+        );
       }
-      else{
-        return <FontAwesomeIcon icon={faEdit} className={styles.optionBtnDeactivated} />
-      }
-  
+    } else {
+      return (
+        <FontAwesomeIcon
+          icon={faEdit}
+          className={styles.optionBtns}
+          onClick={props.onItemCreate}
+        />
+      );
     }
-
   }
   return (
     <div className={styles.listContainer}>
       <div className={styles.optionBtnGroup}>
-        <FontAwesomeIcon icon={faTrashAlt} className={styles.deleteBtn} onClick={props.onItemDelete} />
+        <FontAwesomeIcon
+          icon={faTrashAlt}
+          className={styles.deleteBtn}
+          onClick={props.onItemDelete}
+        />
         <FontAwesomeIcon icon={faCogs} className={styles.optionBtns} />
         {getComposeButton()}
       </div>
       <div className={styles.searchContainer}>
-        <input className={styles.search} placeholder="Search" onChange={(e)=>props.onSearchQuery(e.target.value)}></input>
+        <input
+          className={styles.search}
+          placeholder="Search"
+          onChange={e => props.onSearchQuery(e.target.value)}
+        ></input>
       </div>
 
       <div className={styles.listGroup}>

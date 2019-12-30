@@ -38,14 +38,25 @@ class App extends React.Component {
   };
 
   handleSearchQuery(query) {
-    console.log("query: ", query)
+    console.log("query: ", query);
     this.setState(prevState => {
       const filtered = prevState.notes.filter(item => {
-        console.log(item.title.toUpperCase().search(query.toUpperCase()) || item.contents.toUpperCase().search(query.toUpperCase()))
-        return item.title.toUpperCase().search(query.toUpperCase()) || item.contents.toUpperCase().search(query.toUpperCase())
-      })
-      return { notes: filtered }
-    })
+        console.log(item.title.toUpperCase().search(query.toUpperCase()) > -1);
+        console.log(
+          item.contents.toUpperCase().search(query.toUpperCase()) > -1
+        );
+        console.log(
+          "or condition: ",
+          item.title.toUpperCase().search(query.toUpperCase()) > -1 ||
+            item.contents.toUpperCase().search(query.toUpperCase()) > -1
+        );
+        return (
+          item.title.toUpperCase().search(query.toUpperCase()) > -1 ||
+          item.contents.toUpperCase().search(query.toUpperCase()) > -1
+        );
+      });
+      return { notes: filtered };
+    });
   }
 
   handleItemClick(newActiveID) {
@@ -55,19 +66,35 @@ class App extends React.Component {
   handleItemDelete() {
     this.setState(prevState => {
       console.log("deleting: ", prevState.activeID);
-      const filtered = prevState.notes.filter(item => item.id !== prevState.activeID)
+      const filtered = prevState.notes.filter(
+        item => item.id !== prevState.activeID
+      );
       return { notes: filtered };
-    })
+    });
     this.setFirstItemActive();
   }
 
   handleItemCreate() {
     this.setState(prevState => {
-      const maxID = prevState.notes.reduce((prev, current) => prev.id > current.id ? prev.id : current.id)
-      const newItem = { id: maxID + 1, title: "", contents: "", date: new Date().toLocaleDateString() }
-      const newNotes = [newItem, ...prevState.notes]
+      let maxID;
+      if (prevState.notes.length > 0) {
+        maxID = prevState.notes.reduce((prev, current) => {
+          return prev.id > current.id ? prev.id : current.id;
+        });
+      } else {
+        maxID = 0;
+      }
+
+      const newItem = {
+        id: maxID + 1,
+        title: "",
+        contents: "",
+        date: new Date().toLocaleDateString()
+      };
+      const newNotes = [newItem, ...prevState.notes];
       return { notes: newNotes };
-    })
+    });
+    this.setFirstItemActive();
   }
 
   handleNoteEdit(newItem) {
@@ -82,11 +109,13 @@ class App extends React.Component {
   }
 
   setFirstItemActive() {
-    if (this.state.notes.length > 0) {
-      this.setState(prevState => {
+    this.setState(prevState => {
+      if (prevState.notes.length > 0) {
         return { activeID: prevState.notes[0].id };
-      });
-    }
+      } else {
+        return { activeID: null };
+      }
+    });
   }
 
   componentDidMount() {
