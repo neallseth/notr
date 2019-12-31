@@ -75,8 +75,8 @@ svg {
   cursor: pointer;
 }
 
-.optionBtns {
-  height: 1.35em;
+.optionBtns, .deleteBtn {
+  font-size: 1.25rem;
 }
 
 .deleteBtn:hover {

@@ -5,6 +5,7 @@ import EditingPanel from "./components/EditingPanel";
 
 class App extends React.Component {
   state = {
+    searchQuery: "",
     activeID: null,
     notes: [
       {
@@ -34,29 +35,21 @@ class App extends React.Component {
           "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
         date: "12/25/2019"
       }
-    ]
-  };
+    ]  };
+
+  filterBySearch(data){
+    const {searchQuery} = this.state;
+    const filtered = this.state.notes.filter(item => {
+      return (
+        item.title.toUpperCase().search(searchQuery.toUpperCase()) > -1 ||
+        item.contents.toUpperCase().search(searchQuery.toUpperCase()) > -1
+      );
+    });
+    return filtered;
+  }
 
   handleSearchQuery(query) {
-    console.log("query: ", query);
-    this.setState(prevState => {
-      const filtered = prevState.notes.filter(item => {
-        console.log(item.title.toUpperCase().search(query.toUpperCase()) > -1);
-        console.log(
-          item.contents.toUpperCase().search(query.toUpperCase()) > -1
-        );
-        console.log(
-          "or condition: ",
-          item.title.toUpperCase().search(query.toUpperCase()) > -1 ||
-            item.contents.toUpperCase().search(query.toUpperCase()) > -1
-        );
-        return (
-          item.title.toUpperCase().search(query.toUpperCase()) > -1 ||
-          item.contents.toUpperCase().search(query.toUpperCase()) > -1
-        );
-      });
-      return { notes: filtered };
-    });
+    this.setState({searchQuery:query});
   }
 
   handleItemClick(newActiveID) {
@@ -118,6 +111,7 @@ class App extends React.Component {
     });
   }
 
+
   componentDidMount() {
     this.setFirstItemActive();
   }
@@ -127,13 +121,16 @@ class App extends React.Component {
       item => item.id == this.state.activeID
     );
 
+    const filteredNotes = this.filterBySearch(this.state.notes)
+
+
     return (
       <div className="App">
         <div className="container-fluid px-0">
           <div className="row no-gutters">
             <div className="col-lg-3 col-md-4 col-sm-5 col-xs-6">
               <NoteList
-                items={this.state.notes}
+                items={filteredNotes}
                 onSearchQuery={this.handleSearchQuery.bind(this)}
                 onItemClick={this.handleItemClick.bind(this)}
                 onItemDelete={this.handleItemDelete.bind(this)}

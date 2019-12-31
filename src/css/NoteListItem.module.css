@@ -52,9 +52,14 @@
 
 .itemTitle {
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
 }
 
-.slideOutLeft {
+.noteListItemExitActive {
 	-webkit-animation: slideOutLeft 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 	        animation: slideOutLeft 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
 }

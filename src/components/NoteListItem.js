@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../css/NoteListItem.module.css";
+import { CSSTransition } from 'react-transition-group';
+
 
 function NoteListItem(props) {
   function getClass(id) {
@@ -33,6 +35,7 @@ function NoteListItem(props) {
   }
 
   return (
+    <CSSTransition classNames={{exitActive: styles.noteListItemExitActive}}>
     <div
       role="button"
       onClick={() => props.onItemClick(props.item.id)}
@@ -44,6 +47,7 @@ function NoteListItem(props) {
       </div>
       {getItemContents(props.item.contents)}
     </div>
+    </CSSTransition>
   );
 }
 
