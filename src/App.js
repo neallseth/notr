@@ -58,7 +58,6 @@ class App extends React.Component {
 
   handleItemDelete() {
     this.setState(prevState => {
-      console.log("deleting: ", prevState.activeID);
       const filtered = prevState.notes.filter(
         item => item.id !== prevState.activeID
       );
@@ -123,12 +122,9 @@ class App extends React.Component {
 
     const filteredNotes = this.filterBySearch(this.state.notes)
 
-
     return (
       <div className="App">
-        <div className="container-fluid px-0">
-          <div className="row no-gutters">
-            <div className="col-lg-3 col-md-4 col-sm-5 col-xs-6">
+            <div className="col-md-4">
               <NoteList
                 items={filteredNotes}
                 onSearchQuery={this.handleSearchQuery.bind(this)}
@@ -138,14 +134,12 @@ class App extends React.Component {
                 activeID={this.state.activeID}
               ></NoteList>
             </div>
-            <div className="col-lg-9 col-md-8 col-sm-7 col-xs-6">
+            <div className="col-md-8">
               <EditingPanel
                 item={item}
                 onNoteEdit={this.handleNoteEdit.bind(this)}
               ></EditingPanel>
             </div>
-          </div>
-        </div>
       </div>
     );
   }
