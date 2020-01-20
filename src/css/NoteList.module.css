@@ -66,7 +66,8 @@
 
 .optionBtnGroup {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
   justify-content: space-evenly;
 }
 
@@ -75,16 +76,17 @@ svg {
   cursor: pointer;
 }
 
-.optionBtns, .deleteBtn {
+.optionBtns,
+.deleteBtn {
   font-size: 1.25rem;
 }
 
 .deleteBtn:hover {
-  filter: drop-shadow(0 0 5px #b01617);
+  filter: drop-shadow(0 0 5px var(--themePrimary));
 }
 
 .optionBtns:hover {
-  filter: drop-shadow(0 0 5px #5416b0);
+  filter: drop-shadow(0 0 5px var(--themeTertiary));
 }
 
 .optionBtnDeactivated {

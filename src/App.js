@@ -69,13 +69,13 @@ class App extends React.Component {
 
   handleItemCreate() {
     this.setState(prevState => {
-      let maxID;
+      let maxID = 0;
       if (prevState.notes.length > 0) {
-        maxID = prevState.notes.reduce((prev, current) => {
-          return prev.id > current.id ? prev.id : current.id;
-        });
-      } else {
-        maxID = 0;
+        for (let note of prevState.notes) {
+          if (note.id > maxID) {
+            maxID = note.id;
+          }
+        }
       }
 
       const newItem = {
@@ -124,21 +124,23 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <div className="col-md-4">
-          <NoteList
-            items={filteredNotes}
-            onSearchQuery={this.handleSearchQuery.bind(this)}
-            onItemClick={this.handleItemClick.bind(this)}
-            onItemDelete={this.handleItemDelete.bind(this)}
-            onItemCreate={this.handleItemCreate.bind(this)}
-            activeID={this.state.activeID}
-          ></NoteList>
-        </div>
-        <div className="col-md-8">
-          <EditingPanel
-            item={item}
-            onNoteEdit={this.handleNoteEdit.bind(this)}
-          ></EditingPanel>
+        <div className="row no-gutters">
+          <div className="col-4">
+            <NoteList
+              items={filteredNotes}
+              onSearchQuery={this.handleSearchQuery.bind(this)}
+              onItemClick={this.handleItemClick.bind(this)}
+              onItemDelete={this.handleItemDelete.bind(this)}
+              onItemCreate={this.handleItemCreate.bind(this)}
+              activeID={this.state.activeID}
+            ></NoteList>
+          </div>
+          <div className="col-8">
+            <EditingPanel
+              item={item}
+              onNoteEdit={this.handleNoteEdit.bind(this)}
+            ></EditingPanel>
+          </div>
         </div>
       </div>
     );
