@@ -35,10 +35,11 @@ class App extends React.Component {
           "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
         date: "12/25/2019"
       }
-    ]  };
+    ]
+  };
 
-  filterBySearch(data){
-    const {searchQuery} = this.state;
+  filterBySearch(data) {
+    const { searchQuery } = this.state;
     const filtered = this.state.notes.filter(item => {
       return (
         item.title.toUpperCase().search(searchQuery.toUpperCase()) > -1 ||
@@ -49,7 +50,7 @@ class App extends React.Component {
   }
 
   handleSearchQuery(query) {
-    this.setState({searchQuery:query});
+    this.setState({ searchQuery: query });
   }
 
   handleItemClick(newActiveID) {
@@ -94,7 +95,7 @@ class App extends React.Component {
       let notes = [...prevState.notes];
       const newDate = new Date().toLocaleDateString();
       newItem.date = newDate;
-      const editedIndex = notes.findIndex(item => item.id == newItem.id);
+      const editedIndex = notes.findIndex(item => item.id === newItem.id);
       notes.splice(editedIndex, 1, newItem);
       return { notes };
     });
@@ -110,36 +111,35 @@ class App extends React.Component {
     });
   }
 
-
   componentDidMount() {
     this.setFirstItemActive();
   }
 
   render() {
     const [item] = this.state.notes.filter(
-      item => item.id == this.state.activeID
+      item => item.id === this.state.activeID
     );
 
-    const filteredNotes = this.filterBySearch(this.state.notes)
+    const filteredNotes = this.filterBySearch(this.state.notes);
 
     return (
       <div className="App">
-            <div className="col-md-4">
-              <NoteList
-                items={filteredNotes}
-                onSearchQuery={this.handleSearchQuery.bind(this)}
-                onItemClick={this.handleItemClick.bind(this)}
-                onItemDelete={this.handleItemDelete.bind(this)}
-                onItemCreate={this.handleItemCreate.bind(this)}
-                activeID={this.state.activeID}
-              ></NoteList>
-            </div>
-            <div className="col-md-8">
-              <EditingPanel
-                item={item}
-                onNoteEdit={this.handleNoteEdit.bind(this)}
-              ></EditingPanel>
-            </div>
+        <div className="col-md-4">
+          <NoteList
+            items={filteredNotes}
+            onSearchQuery={this.handleSearchQuery.bind(this)}
+            onItemClick={this.handleItemClick.bind(this)}
+            onItemDelete={this.handleItemDelete.bind(this)}
+            onItemCreate={this.handleItemCreate.bind(this)}
+            activeID={this.state.activeID}
+          ></NoteList>
+        </div>
+        <div className="col-md-8">
+          <EditingPanel
+            item={item}
+            onNoteEdit={this.handleNoteEdit.bind(this)}
+          ></EditingPanel>
+        </div>
       </div>
     );
   }
