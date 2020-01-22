@@ -5,37 +5,11 @@ import EditingPanel from "./components/EditingPanel";
 
 class App extends React.Component {
   state = {
+    sidebarOpen: true,
     searchQuery: "",
     activeID: null,
-    notes: [
-      {
-        id: 1,
-        title: "First Item",
-        contents: "Donec id eget risus varius blandit.",
-        date: "12/24/2019"
-      },
-      {
-        id: 2,
-        title: "Second Item",
-        contents:
-          "Donec id elit non mi porta gravida at eget metus mi porta gravida at eget metus mi porta gravida at eget metus mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
-        date: "12/24/2019"
-      },
-      {
-        id: 3,
-        title: "Third Item",
-        contents:
-          "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
-        date: "12/24/2019"
-      },
-      {
-        id: 4,
-        title: "Fourth Item",
-        contents:
-          "Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.",
-        date: "12/25/2019"
-      }
-    ]
+    notes: [],
+    savedNotes: []
   };
 
   filterBySearch(data) {
@@ -90,6 +64,15 @@ class App extends React.Component {
     this.setFirstItemActive();
   }
 
+  handleSave() {
+    localStorage.setItem("notes", JSON.stringify(this.state.notes));
+    const savedNotes = localStorage.getItem("notes");
+    this.setState({
+      savedNotes: JSON.parse(savedNotes),
+      notes: JSON.parse(savedNotes)
+    });
+  }
+
   handleNoteEdit(newItem) {
     this.setState(prevState => {
       let notes = [...prevState.notes];
@@ -98,6 +81,12 @@ class App extends React.Component {
       const editedIndex = notes.findIndex(item => item.id === newItem.id);
       notes.splice(editedIndex, 1, newItem);
       return { notes };
+    });
+  }
+
+  handleSidebarToggle() {
+    this.setState(prevState => {
+      return { sidebarOpen: !prevState.sidebarOpen };
     });
   }
 
@@ -112,6 +101,19 @@ class App extends React.Component {
   }
 
   componentDidMount() {
+    const savedNotes = localStorage.getItem("notes");
+    this.setState({
+      notes: savedNotes
+        ? JSON.parse(savedNotes)
+        : [
+            {
+              id: 1,
+              title: "Welcome to Notr",
+              contents: "Hi, thanks for checking out Notr!",
+              date: new Date().toLocaleDateString()
+            }
+          ]
+    });
     this.setFirstItemActive();
   }
 
@@ -124,23 +126,39 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <div className="row no-gutters">
-          <div className="col-4">
-            <NoteList
-              items={filteredNotes}
-              onSearchQuery={this.handleSearchQuery.bind(this)}
-              onItemClick={this.handleItemClick.bind(this)}
-              onItemDelete={this.handleItemDelete.bind(this)}
-              onItemCreate={this.handleItemCreate.bind(this)}
-              activeID={this.state.activeID}
-            ></NoteList>
-          </div>
-          <div className="col-8">
-            <EditingPanel
-              item={item}
-              onNoteEdit={this.handleNoteEdit.bind(this)}
-            ></EditingPanel>
-          </div>
+        <div
+          className={
+            this.state.sidebarOpen
+              ? "sidebar sidebar-active"
+              : "sidebar sidebar-inactive"
+          }
+        >
+          <NoteList
+            items={filteredNotes}
+            saveEnabled={
+              JSON.stringify(this.state.notes) !==
+              JSON.stringify(this.state.savedNotes)
+            }
+            onSearchQuery={this.handleSearchQuery.bind(this)}
+            onItemClick={this.handleItemClick.bind(this)}
+            onItemDelete={this.handleItemDelete.bind(this)}
+            onItemCreate={this.handleItemCreate.bind(this)}
+            activeID={this.state.activeID}
+            onSidebarToggle={this.handleSidebarToggle.bind(this)}
+            onSave={this.handleSave.bind(this)}
+          ></NoteList>
+        </div>
+        <div
+          className={
+            this.state.sidebarOpen
+              ? "content-area content-area-shared"
+              : "content-area"
+          }
+        >
+          <EditingPanel
+            item={item}
+            onNoteEdit={this.handleNoteEdit.bind(this)}
+          ></EditingPanel>
         </div>
       </div>
     );

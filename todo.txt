@@ -1,9 +1,9 @@
 order notes in descending order by date (create animation to re-order)
 
-add search functionality for note items
-
 add search icon to input box
 
 placeholder to in panel view when no notes exist
 
-option buttons across top of list sidebar for hamburger, compose, delete, and save (to DB), settings
+add conditional hamburger on content area section when sidebar is closed
+
+add toast to confirm when user saved

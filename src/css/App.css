@@ -12,3 +12,44 @@
   --themeAccent: rgba(121, 82, 179, 0.25);
   --borderRadius: 0.35rem;
 }
+
+.sidebar {
+  width: 300px;
+  transition: 0.5s;
+}
+
+.sidebar-active {
+  margin-left: 0px;
+}
+
+.sidebar-inactive {
+  margin-left: -300px;
+}
+
+.content-area {
+  flex: 1;
+  transition: 0.5s;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidebar {
+    width: 100%;
+    transition: 0.5s;
+  }
+  .sidebar-active {
+    margin-left: 0px;
+  }
+
+  .sidebar-inactive {
+    margin-left: -100%;
+  }
+
+  .content-area {
+    flex: 1;
+    transition: 0.5s;
+  }
+
+  .content-area-shared {
+    display: none;
+  }
+}

@@ -2,7 +2,12 @@ import React from "react";
 import styles from "../css/NoteList.module.css";
 import NoteListItem from "./NoteListItem";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEdit, faTrashAlt, faCogs } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEdit,
+  faTrashAlt,
+  faSave,
+  faBars
+} from "@fortawesome/free-solid-svg-icons";
 
 function NoteList(props) {
   function getComposeButton() {
@@ -34,6 +39,24 @@ function NoteList(props) {
       );
     }
   }
+  function getSaveButton() {
+    if (props.saveEnabled) {
+      return (
+        <FontAwesomeIcon
+          icon={faSave}
+          className={styles.optionBtns}
+          onClick={props.onSave}
+        />
+      );
+    } else {
+      return (
+        <FontAwesomeIcon
+          icon={faSave}
+          className={styles.optionBtnDeactivated}
+        />
+      );
+    }
+  }
   return (
     <div className={styles.listContainer}>
       <div className={styles.optionBtnGroup}>
@@ -42,8 +65,13 @@ function NoteList(props) {
           className={styles.deleteBtn}
           onClick={props.onItemDelete}
         />
-        <FontAwesomeIcon icon={faCogs} className={styles.optionBtns} />
+        {getSaveButton()}
         {getComposeButton()}
+        <FontAwesomeIcon
+          icon={faBars}
+          className={styles.optionBtns}
+          onClick={props.onSidebarToggle}
+        />
       </div>
       <div className={styles.searchContainer}>
         <input

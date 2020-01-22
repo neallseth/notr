@@ -90,6 +90,7 @@ svg {
 }
 
 .optionBtnDeactivated {
+  font-size: 1.25rem;
   color: grey;
   cursor: default;
 }
