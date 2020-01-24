@@ -78,7 +78,7 @@ svg {
 
 .optionBtns,
 .deleteBtn {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
 }
 
 .deleteBtn:hover {
@@ -90,7 +90,7 @@ svg {
 }
 
 .optionBtnDeactivated {
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: grey;
   cursor: default;
 }

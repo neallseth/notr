@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../css/EditingPanel.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars } from "@fortawesome/free-solid-svg-icons";
 
 function EditingPanel(props) {
   function onTitleChange(e) {
@@ -18,6 +20,11 @@ function EditingPanel(props) {
     if (props.item) {
       return (
         <>
+          <FontAwesomeIcon
+            icon={faBars}
+            className={styles.optionBtns}
+            onClick={props.onSidebarToggle}
+          />
           <input
             className={styles.titleInput}
             type="text"

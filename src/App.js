@@ -158,6 +158,7 @@ class App extends React.Component {
           <EditingPanel
             item={item}
             onNoteEdit={this.handleNoteEdit.bind(this)}
+            onSidebarToggle={this.handleSidebarToggle.bind(this)}
           ></EditingPanel>
         </div>
       </div>

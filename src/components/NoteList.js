@@ -6,7 +6,7 @@ import {
   faEdit,
   faTrashAlt,
   faSave,
-  faBars
+  faTimes
 } from "@fortawesome/free-solid-svg-icons";
 
 function NoteList(props) {
@@ -68,7 +68,7 @@ function NoteList(props) {
         {getSaveButton()}
         {getComposeButton()}
         <FontAwesomeIcon
-          icon={faBars}
+          icon={faTimes}
           className={styles.optionBtns}
           onClick={props.onSidebarToggle}
         />

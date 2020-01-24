@@ -48,3 +48,19 @@
   border-color: var(--themeTertiary);
   box-shadow: 0 0 0 3px var(--themeAccent);
 }
+
+.optionBtns {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  margin-top: 0.5rem;
+}
+
+.optionBtns:hover {
+  filter: drop-shadow(0 0 5px var(--themeTertiary));
+}
+
+@media only screen and (max-width: 600px) {
+  .titleInput {
+    width: 100%;
+  }
+}
