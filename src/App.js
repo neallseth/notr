@@ -100,19 +100,31 @@ class App extends React.Component {
     });
   }
 
+  changeDetected() {
+    const notes = this.state.notes.map(note => [note.title, note.contents]);
+    const savedNotes = this.state.savedNotes.map(note => [
+      note.title,
+      note.contents
+    ]);
+
+    return JSON.stringify(notes) !== JSON.stringify(savedNotes);
+  }
+
   componentDidMount() {
-    const savedNotes = localStorage.getItem("notes");
+    const savedNotes = JSON.parse(localStorage.getItem("notes"));
+    const initNotes = savedNotes.length
+      ? savedNotes
+      : [
+          {
+            id: 1,
+            title: "Welcome to Notr",
+            contents: "Hi, thanks for checking out Notr!",
+            date: new Date().toLocaleDateString()
+          }
+        ];
     this.setState({
-      notes: savedNotes
-        ? JSON.parse(savedNotes)
-        : [
-            {
-              id: 1,
-              title: "Welcome to Notr",
-              contents: "Hi, thanks for checking out Notr!",
-              date: new Date().toLocaleDateString()
-            }
-          ]
+      notes: JSON.parse(JSON.stringify(initNotes)),
+      savedNotes: JSON.parse(JSON.stringify(initNotes))
     });
     this.setFirstItemActive();
   }
@@ -135,10 +147,7 @@ class App extends React.Component {
         >
           <NoteList
             items={filteredNotes}
-            saveEnabled={
-              JSON.stringify(this.state.notes) !==
-              JSON.stringify(this.state.savedNotes)
-            }
+            saveEnabled={this.changeDetected()}
             onSearchQuery={this.handleSearchQuery.bind(this)}
             onItemClick={this.handleItemClick.bind(this)}
             onItemDelete={this.handleItemDelete.bind(this)}

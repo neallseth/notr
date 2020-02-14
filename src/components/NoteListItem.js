@@ -36,19 +36,17 @@ function NoteListItem(props) {
   }
 
   return (
-    <CSSTransition classNames={{ exitActive: styles.noteListItemExitActive }}>
-      <div
-        role="button"
-        onClick={() => props.onItemClick(props.item.id)}
-        className={getClass(props.item.id)}
-      >
-        <div className={styles.itemTitleRow}>
-          {getItemTitle(props.item.title)}
-          <span className={styles.itemDate}>{props.item.date}</span>
-        </div>
-        {getItemContents(props.item.contents)}
+    <div
+      role="button"
+      onClick={() => props.onItemClick(props.item.id)}
+      className={getClass(props.item.id)}
+    >
+      <div className={styles.itemTitleRow}>
+        {getItemTitle(props.item.title)}
+        <span className={styles.itemDate}>{props.item.date}</span>
       </div>
-    </CSSTransition>
+      {getItemContents(props.item.contents)}
+    </div>
   );
 }
 
