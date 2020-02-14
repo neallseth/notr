@@ -8,6 +8,4 @@ add persistent navbar on top
 
 add web speech api to text input for notes
 
-fix bug where save available on initial load
-
 add toast to confirm when user saved
