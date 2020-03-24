@@ -112,7 +112,7 @@ class App extends React.Component {
 
   componentDidMount() {
     const savedNotes = JSON.parse(localStorage.getItem("notes"));
-    const initNotes = savedNotes.length
+    const initNotes = savedNotes?.length
       ? savedNotes
       : [
           {
