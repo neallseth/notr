@@ -62,7 +62,7 @@ function NoteList(props) {
       <div className={styles.optionBtnGroup}>
         <FontAwesomeIcon
           icon={faTrashAlt}
-          className={styles.deleteBtn}
+          className={styles.optionBtns}
           onClick={props.onItemDelete}
         />
         {getSaveButton()}

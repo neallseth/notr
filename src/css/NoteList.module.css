@@ -81,12 +81,8 @@ svg {
   font-size: 1.5rem;
 }
 
-.deleteBtn:hover {
-  filter: drop-shadow(0 0 5px var(--themePrimary));
-}
-
 .optionBtns:hover {
-  filter: drop-shadow(0 0 5px var(--themeTertiary));
+  filter: drop-shadow(0 0 5px var(--themePrimary));
 }
 
 .optionBtnDeactivated {

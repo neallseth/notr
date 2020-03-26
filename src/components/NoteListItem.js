@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../css/NoteListItem.module.css";
-import { CSSTransition } from "react-transition-group";
 
 function NoteListItem(props) {
   function getClass(id) {
