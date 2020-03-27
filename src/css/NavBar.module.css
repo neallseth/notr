@@ -1,0 +1,28 @@
+.bar{
+    background-color: var(--themeSecondary);
+    min-height:3.5rem;
+    padding:.5rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.optionBtn {
+    font-size: 1.5rem;
+margin-left: 1rem;
+margin-right:1rem;  
+}
+
+  .optionBtnDeactivated {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+margin-right:1rem;  
+
+    color: grey;
+    cursor: default;
+  }
+  
+  
+  .optionBtn:hover {
+    filter: drop-shadow(0 0 5px var(--themeSecondary));
+  }

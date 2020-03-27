@@ -1,8 +1,8 @@
 .listContainer {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  background-color: var(--themeSecondary);
+  height: 100%;
+  background-color: var(--themeAccent2);
   padding: 0.5rem;
 }
 
@@ -16,7 +16,6 @@
 .listGroup::-webkit-scrollbar {
   width: 10px;
   background-color: rgba(0, 0, 0, 0);
-  -webkit-border-radius: 100px;
 }
 .listGroup::-webkit-scrollbar:hover {
   background-color: rgba(0, 0, 0, 0.09);

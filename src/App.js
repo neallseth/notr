@@ -2,6 +2,7 @@ import React from "react";
 import "./css/App.css";
 import NoteList from "./components/NoteList";
 import EditingPanel from "./components/EditingPanel";
+import NavBar from "./components/NavBar";
 
 class App extends React.Component {
   state = {
@@ -115,13 +116,13 @@ class App extends React.Component {
     const initNotes = savedNotes?.length
       ? savedNotes
       : [
-          {
-            id: 1,
-            title: "Welcome to Notr",
-            contents: "Hi, thanks for checking out Notr!",
-            date: new Date().toLocaleDateString()
-          }
-        ];
+        {
+          id: 1,
+          title: "Welcome to Notr",
+          contents: "Hi, thanks for checking out Notr!",
+          date: new Date().toLocaleDateString()
+        }
+      ];
     this.setState({
       notes: JSON.parse(JSON.stringify(initNotes)),
       savedNotes: JSON.parse(JSON.stringify(initNotes))
@@ -138,38 +139,53 @@ class App extends React.Component {
 
     return (
       <div className="App">
-        <div
-          className={
-            this.state.sidebarOpen
-              ? "sidebar sidebar-active"
-              : "sidebar sidebar-inactive"
-          }
-        >
-          <NoteList
-            items={filteredNotes}
-            saveEnabled={this.changeDetected()}
-            onSearchQuery={this.handleSearchQuery.bind(this)}
-            onItemClick={this.handleItemClick.bind(this)}
-            onItemDelete={this.handleItemDelete.bind(this)}
-            onItemCreate={this.handleItemCreate.bind(this)}
-            activeID={this.state.activeID}
-            onSidebarToggle={this.handleSidebarToggle.bind(this)}
-            onSave={this.handleSave.bind(this)}
-          ></NoteList>
+
+        <NavBar
+          onSidebarToggle={this.handleSidebarToggle.bind(this)}
+          items={filteredNotes}
+          saveEnabled={this.changeDetected()}
+          onItemDelete={this.handleItemDelete.bind(this)}
+          onItemCreate={this.handleItemCreate.bind(this)}
+          activeID={this.state.activeID}
+          onSave={this.handleSave.bind(this)}
+
+        ></NavBar>
+
+        <div className="main">
+
+          <div
+            className={
+              this.state.sidebarOpen
+                ? "sidebar sidebar-active"
+                : "sidebar sidebar-inactive"
+            }
+          >
+            <NoteList
+              items={filteredNotes}
+              saveEnabled={this.changeDetected()}
+              onSearchQuery={this.handleSearchQuery.bind(this)}
+              onItemClick={this.handleItemClick.bind(this)}
+              onItemDelete={this.handleItemDelete.bind(this)}
+              onItemCreate={this.handleItemCreate.bind(this)}
+              activeID={this.state.activeID}
+              onSave={this.handleSave.bind(this)}
+            ></NoteList>
+          </div>
+          <div
+            className={
+              this.state.sidebarOpen
+                ? "content-area content-area-shared"
+                : "content-area"
+            }
+          >
+            <EditingPanel
+              item={item}
+              onNoteEdit={this.handleNoteEdit.bind(this)}
+              onSidebarToggle={this.handleSidebarToggle.bind(this)}
+            ></EditingPanel>
+          </div>
         </div>
-        <div
-          className={
-            this.state.sidebarOpen
-              ? "content-area content-area-shared"
-              : "content-area"
-          }
-        >
-          <EditingPanel
-            item={item}
-            onNoteEdit={this.handleNoteEdit.bind(this)}
-            onSidebarToggle={this.handleSidebarToggle.bind(this)}
-          ></EditingPanel>
-        </div>
+
       </div>
     );
   }

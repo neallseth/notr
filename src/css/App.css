@@ -2,7 +2,14 @@
   background-color: var(--themePrimary);
   height: 100vh;
   display: flex;
+  flex-direction: column;
   overflow: hidden;
+}
+
+.main{
+  display:flex;
+  flex-direction: row;
+  height:100%
 }
 
 :root {
@@ -10,6 +17,7 @@
   --themeSecondary: #505661;
   --themeTertiary: #7644c0;
   --themeAccent: rgba(121, 82, 179, 0.25);
+  --themeAccent2:#2d323b;
   --borderRadius: 0.35rem;
 }
 
