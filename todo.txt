@@ -4,8 +4,12 @@ add search icon to input box
 
 placeholder to in panel view when no notes exist
 
-add persistent navbar on top
-
 add web speech api to text input for notes
 
 add toast to confirm when user saved
+
+implement export to csv
+
+rich text editor (draft.js, quill, etc.)
+
+beautify css/design
