@@ -13,3 +13,5 @@ implement export to csv
 rich text editor (draft.js, quill, etc.)
 
 beautify css/design
+
+rip out bootstrap
