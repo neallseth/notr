@@ -1,5 +1,7 @@
 import React from "react";
 import styles from "../css/NoteListItem.module.css";
+import cx from 'classnames'
+
 
 function NoteListItem(props) {
   function getClass(id) {
@@ -10,16 +12,8 @@ function NoteListItem(props) {
     }
   }
 
-  function getItemTitle(title) {
-    if (title) {
-      return <h5 className={styles.itemTitle}>{props.item.title}</h5>;
-    } else {
-      return (
-        <h5 style={{ fontStyle: "italic" }} className={styles.itemTitle}>
-          No Title
-        </h5>
-      );
-    }
+  function getItemTitle(titleExists) {
+    return <p className={cx(styles.itemTitle,{[styles.itemTitleRegular]:titleExists, [styles.itemTitleItalic]:!titleExists})}>{titleExists?props.item.title:"No Title"}</p>;
   }
 
   function getItemContents(contents) {
@@ -41,7 +35,7 @@ function NoteListItem(props) {
       className={getClass(props.item.id)}
     >
       <div className={styles.itemTitleRow}>
-        {getItemTitle(props.item.title)}
+        {getItemTitle(!!props.item.title)}
         <span className={styles.itemDate}>{props.item.date}</span>
       </div>
       {getItemContents(props.item.contents)}

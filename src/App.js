@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/Base.css"
 import "./css/App.css";
 import NoteList from "./components/NoteList";
 import EditingPanel from "./components/EditingPanel";
@@ -139,7 +140,6 @@ class App extends React.Component {
 
     return (
       <div className="App">
-
         <NavBar
           onSidebarToggle={this.handleSidebarToggle.bind(this)}
           items={filteredNotes}
@@ -148,11 +148,9 @@ class App extends React.Component {
           onItemCreate={this.handleItemCreate.bind(this)}
           activeID={this.state.activeID}
           onSave={this.handleSave.bind(this)}
-
         ></NavBar>
 
         <div className="main">
-
           <div
             className={
               this.state.sidebarOpen

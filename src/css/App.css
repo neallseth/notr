@@ -1,3 +1,12 @@
+@font-face {
+  font-family: 'Open Sans';
+    src: url('../assets/fonts/OpenSans-Regular.ttf')  format('truetype')
+}
+
+*{
+  font-family: 'Open Sans', sans-serif;
+}
+
 .App {
   background-color: var(--themePrimary);
   height: 100vh;
@@ -5,6 +14,7 @@
   flex-direction: column;
   overflow: hidden;
 }
+
 
 .main{
   display:flex;

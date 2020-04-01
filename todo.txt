@@ -8,10 +8,10 @@ add web speech api to text input for notes
 
 add toast to confirm when user saved
 
-implement export to csv
+implement export to csv (add settings modal to add this option)
 
 rich text editor (draft.js, quill, etc.)
 
 beautify css/design
 
-rip out bootstrap
+modify conditional component rendering to use classnames module (cx syntax)
