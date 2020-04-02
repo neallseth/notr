@@ -6,6 +6,7 @@ import {
     faTrashAlt,
     faSave,
 } from "@fortawesome/free-solid-svg-icons";
+import cx from 'classnames'
 
 
 
@@ -39,24 +40,6 @@ function NavBar(props) {
             );
         }
     }
-    function getSaveButton() {
-        if (props.saveEnabled) {
-            return (
-                <FontAwesomeIcon
-                    icon={faSave}
-                    className={styles.optionBtn}
-                    onClick={props.onSave}
-                />
-            );
-        } else {
-            return (
-                <FontAwesomeIcon
-                    icon={faSave}
-                    className={styles.optionBtnDeactivated}
-                />
-            );
-        }
-    }
 
     return <header className={styles.bar}>
         <FontAwesomeIcon
@@ -71,7 +54,11 @@ function NavBar(props) {
                 onClick={props.onItemDelete}
             />
 
-            {getSaveButton()}
+            <FontAwesomeIcon
+                icon={faSave}
+                className={cx({ [styles.optionBtn]: props.saveEnabled, [styles.optionBtnDeactivated]: !props.saveEnabled })}
+                onClick={props.onSave}
+            />
             {getComposeButton()}
 
         </div>

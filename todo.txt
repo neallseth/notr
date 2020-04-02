@@ -15,3 +15,5 @@ rich text editor (draft.js, quill, etc.)
 beautify css/design
 
 modify conditional component rendering to use classnames module (cx syntax)
+
+animations with framer motion or transition group
