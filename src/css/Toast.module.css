@@ -1,0 +1,44 @@
+.toast{
+    width: 300px;
+    height: 100px;
+    border-radius:var(--borderRadius);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    animation: slideUpAndDownOut 2s;
+}
+
+.success{
+    background-color: rgb(24, 145, 24);
+}
+
+.warn{
+    background-color: yellow;
+}
+
+.error{
+    background-color: red;
+}
+
+@keyframes slideUpAndDownOut {
+    0% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+      }
+
+    25%,75% {
+      -webkit-transform: translateY(0);
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    100% {
+        -webkit-transform: translateY(1000px);
+        transform: translateY(1000px);
+        opacity: 0;
+      }
+  }

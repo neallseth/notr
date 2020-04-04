@@ -4,6 +4,7 @@ import "./css/App.css";
 import NoteList from "./components/NoteList";
 import EditingPanel from "./components/EditingPanel";
 import NavBar from "./components/NavBar";
+import Toast from "./components/Toast"
 
 class App extends React.Component {
   state = {
@@ -11,7 +12,8 @@ class App extends React.Component {
     searchQuery: "",
     activeID: null,
     notes: [],
-    savedNotes: []
+    savedNotes: [],
+    toasts: []
   };
 
   filterBySearch(data) {
@@ -72,7 +74,7 @@ class App extends React.Component {
     this.setState({
       savedNotes: JSON.parse(savedNotes),
       notes: JSON.parse(savedNotes)
-    });
+    }, this.showToast("success", "Notes saved!"));
   }
 
   handleNoteEdit(newItem) {
@@ -110,6 +112,15 @@ class App extends React.Component {
     ]);
 
     return JSON.stringify(notes) !== JSON.stringify(savedNotes);
+  }
+
+  showToast(type, message) {
+    let toasts = JSON.parse(JSON.stringify(this.state.toasts));
+    const id = toasts.length + 1;
+    toasts.push({ id, type, message })
+    this.setState({ toasts });
+    const removedToast = this.state.toasts.filter(toast=>toast.id!==id)
+    setTimeout(() => this.setState({toasts:removedToast}),2000);
   }
 
   componentDidMount() {
@@ -182,7 +193,12 @@ class App extends React.Component {
               onSidebarToggle={this.handleSidebarToggle.bind(this)}
             ></EditingPanel>
           </div>
+
         </div>
+       {this.state.toasts.map(item=>{
+         return <Toast key={item.id} type={item.type} message={item.message}></Toast>
+       })}
+       
 
       </div>
     );
