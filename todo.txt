@@ -6,8 +6,6 @@ placeholder to in panel view when no notes exist
 
 add web speech api to text input for notes
 
-add toast to confirm when user saved
-
 implement export to csv (add settings modal to add this option)
 
 rich text editor (draft.js, quill, etc.)
@@ -17,3 +15,7 @@ beautify css/design
 modify conditional component rendering to use classnames module (cx syntax)
 
 animations with framer motion or transition group
+
+add color gradient and background shadow to toast notifications
+
+add shadow to list items

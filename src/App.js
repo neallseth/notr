@@ -41,7 +41,7 @@ class App extends React.Component {
         item => item.id !== prevState.activeID
       );
       return { notes: filtered };
-    });
+    }, this.showToast("danger", "Note deleted!"));
     this.setFirstItemActive();
   }
 
