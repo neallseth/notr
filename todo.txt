@@ -19,3 +19,5 @@ animations with framer motion or transition group
 add color gradient and background shadow to toast notifications
 
 add shadow to list items
+
+fix delete button enabled bug (when no list items)

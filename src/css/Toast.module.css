@@ -12,7 +12,8 @@
     animation: slideUpAndDownOut 2.5s;
     display: flex;
     align-items: center;
-    color: lightgrey
+    color: lightgrey;
+    box-shadow: 5px 10px 15px rgba(0, 0, 0, .35)
 }
 
 .success{
@@ -20,11 +21,11 @@
 }
 
 .warn{
-    background-color: yellow;
+    background-color: #FFFF5C;    ;
 }
 
 .danger{
-    background-color: red;
+    background-color: #BF0000;
 }
 
 .icon {

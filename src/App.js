@@ -1,6 +1,9 @@
 import React from "react";
+
 import "./css/Base.css"
 import "./css/App.css";
+import cx from 'classnames'
+
 import NoteList from "./components/NoteList";
 import EditingPanel from "./components/EditingPanel";
 import NavBar from "./components/NavBar";
@@ -120,7 +123,7 @@ class App extends React.Component {
     toasts.push({ id, type, message })
     this.setState({ toasts });
     const removedToast = this.state.toasts.filter(toast=>toast.id!==id)
-    setTimeout(() => this.setState({toasts:removedToast}),2000);
+    setTimeout(() => this.setState({toasts:removedToast}),2500);
   }
 
   componentDidMount() {
@@ -163,11 +166,7 @@ class App extends React.Component {
 
         <div className="main">
           <div
-            className={
-              this.state.sidebarOpen
-                ? "sidebar sidebar-active"
-                : "sidebar sidebar-inactive"
-            }
+            className={cx('sidebar',{'sidebar-active':this.state.sidebarOpen,'sidebar-inactive':!this.state.sidebarOpen})}
           >
             <NoteList
               items={filteredNotes}
@@ -181,11 +180,7 @@ class App extends React.Component {
             ></NoteList>
           </div>
           <div
-            className={
-              this.state.sidebarOpen
-                ? "content-area content-area-shared"
-                : "content-area"
-            }
+            className={cx('content-area',{'content-area-shared':this.state.sidebarOpen,'content-area':!this.state.sidebarOpen})}
           >
             <EditingPanel
               item={item}
