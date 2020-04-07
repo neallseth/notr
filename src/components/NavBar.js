@@ -11,35 +11,6 @@ import cx from 'classnames'
 
 
 function NavBar(props) {
-    function getComposeButton() {
-        if (props.items.length) {
-            const { title, contents } = props.items[0];
-            if (title || contents) {
-                return (
-                    <FontAwesomeIcon
-                        icon={faEdit}
-                        className={styles.optionBtn}
-                        onClick={props.onItemCreate}
-                    />
-                );
-            } else {
-                return (
-                    <FontAwesomeIcon
-                        icon={faEdit}
-                        className={styles.optionBtnDeactivated}
-                    />
-                );
-            }
-        } else {
-            return (
-                <FontAwesomeIcon
-                    icon={faEdit}
-                    className={styles.optionBtn}
-                    onClick={props.onItemCreate}
-                />
-            );
-        }
-    }
 
     return <header className={styles.bar}>
         <FontAwesomeIcon
@@ -50,16 +21,20 @@ function NavBar(props) {
         <div className={styles.optionBtnGroup}>
             <FontAwesomeIcon
                 icon={faTrashAlt}
-                className={styles.optionBtn}
+                className={cx(styles.optionBtn,{[styles.optionBtnDeactivated]:!props.activeID})}
                 onClick={props.onItemDelete}
             />
 
             <FontAwesomeIcon
                 icon={faSave}
-                className={cx({ [styles.optionBtn]: props.saveEnabled, [styles.optionBtnDeactivated]: !props.saveEnabled })}
+                className={cx(styles.optionBtn,{[styles.optionBtnDeactivated]: !props.saveEnabled })}
                 onClick={props.onSave}
             />
-            {getComposeButton()}
+            <FontAwesomeIcon
+                icon={faEdit}
+                className={cx(styles.optionBtn,{[styles.optionBtnDeactivated]:!(props.items[0]?.title||props.items[0]?.contents || !props.activeID)})}
+                onClick={()=>{(props.items[0]?.title||props.items[0]?.contents || !props.activeID) ? props.onItemCreate() : (()=>{})()}}
+            />
 
         </div>
 

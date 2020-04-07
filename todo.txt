@@ -20,4 +20,4 @@ add color gradient and background shadow to toast notifications
 
 add shadow to list items
 
-fix delete button enabled bug (when no list items)
+fix hanging toast bug (occasionally not removed from state)

@@ -6,7 +6,7 @@
     justify-content: space-between;
     align-items: center;
     z-index: 1071;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.85)
+    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.85)
 }
 
 .optionBtn {
@@ -16,10 +16,6 @@ margin-right:1rem;
 }
 
   .optionBtnDeactivated {
-    font-size: 1.5rem;
-    margin-left: 1rem;
-margin-right:1rem;  
-
     color: grey;
     cursor: default;
   }
