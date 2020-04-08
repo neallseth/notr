@@ -1,13 +1,12 @@
 @font-face {
-  font-family: 'Open Sans Bold';
-    src: url('../assets/fonts/OpenSans-SemiBold.ttf')  format('truetype')
+  font-family: "Open Sans Bold";
+  src: url("../assets/fonts/OpenSans-SemiBold.ttf") format("truetype");
 }
 
 @font-face {
-  font-family: 'Open Sans Bold Italic';
-    src: url('../assets/fonts/OpenSans-SemiBoldItalic.ttf')  format('truetype')
+  font-family: "Open Sans Bold Italic";
+  src: url("../assets/fonts/OpenSans-SemiBoldItalic.ttf") format("truetype");
 }
-
 
 .listItemText {
   font-size: 0.8rem;
@@ -21,11 +20,12 @@
 .listItem {
   background-color: var(--themePrimary);
   color: lightgray;
+  width: 94%;
   padding: 0.75rem 1.25rem;
   height: 5.5rem;
   cursor: pointer;
   transition: 0.15s;
-  animation: slideInLeft .55s;
+  animation: slideInLeft 0.55s;
 }
 
 .listItem:first-child {
@@ -41,12 +41,15 @@
 .listItem:hover {
   background-color: var(--themeAccent);
   text-decoration: none;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.55);
 }
 
 .activeItem,
 .activeItem:hover {
+  background-image: linear-gradient(to right, #5d2ea3, #7644c0);
   background-color: var(--themeTertiary);
   color: white;
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.55);
 }
 
 .itemTitleRow {
@@ -67,12 +70,12 @@
   overflow: hidden;
 }
 
-.itemTitleRegular{
-  font-family: 'Open Sans Bold', sans-serif;
+.itemTitleRegular {
+  font-family: "Open Sans Bold", sans-serif;
 }
 
-.itemTitleItalic{
-  font-family: 'Open Sans Bold Italic', sans-serif;
+.itemTitleItalic {
+  font-family: "Open Sans Bold Italic", sans-serif;
 }
 
 .noteListItemExitActive {

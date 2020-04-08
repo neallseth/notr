@@ -1,59 +1,60 @@
-.toast{
-    width: 250px;
-    height: 75px;
-    padding:20px;
-    border-radius:var(--borderRadius);
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    animation: slideUpAndDownOut 2.5s;
-    display: flex;
-    align-items: center;
-    color: lightgrey;
-    box-shadow: 5px 10px 15px rgba(0, 0, 0, .35)
+.toast {
+  width: 250px;
+  height: 75px;
+  padding: 20px;
+  border-radius: var(--borderRadius);
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  animation: slideUpAndDownOut 2.5s;
+  display: flex;
+  align-items: center;
+  color: white;
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.35);
 }
 
-.success{
-    background-color: rgb(24, 145, 24);
+.success {
+  background-image: linear-gradient(to bottom right, #00a103, #adcc00);
 }
 
-.warn{
-    background-color: #FFFF5C;    ;
+.warn {
+  background-color: #ffff5c;
 }
 
-.danger{
-    background-color: #BF0000;
+.danger {
+  background-image: linear-gradient(to bottom right, #e00000, #e86507);
 }
 
 .icon {
-    font-size: 1.5rem;
-margin-left: 1rem;
-margin-right:1rem;  
+  font-size: 1.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
-.message{
-    margin-left: 10px;
+.message {
+  margin-left: 10px;
 }
 
 @keyframes slideUpAndDownOut {
-    0% {
-        -webkit-transform: translateY(0%);
-        transform: translateY(0%);
-        opacity: 0;
-      }
-
-    25%,75% {
-      -webkit-transform: translateY(-50%);
-      transform: translateY(-50%);
-      opacity: 1;
-    }
-    
-    100% {
-        -webkit-transform: translateY(0%);
-        transform: translateY(0%);
-        opacity: 0;
-      }
+  0% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0;
   }
+
+  25%,
+  75% {
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    opacity: 1;
+  }
+
+  100% {
+    -webkit-transform: translateY(0%);
+    transform: translateY(0%);
+    opacity: 0;
+  }
+}

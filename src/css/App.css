@@ -1,10 +1,10 @@
 @font-face {
-  font-family: 'Open Sans';
-    src: url('../assets/fonts/OpenSans-Regular.ttf')  format('truetype')
+  font-family: "Open Sans";
+  src: url("../assets/fonts/OpenSans-Regular.ttf") format("truetype");
 }
 
-*{
-  font-family: 'Open Sans', sans-serif;
+* {
+  font-family: "Open Sans", sans-serif;
 }
 
 .App {
@@ -15,11 +15,10 @@
   overflow: hidden;
 }
 
-
-.main{
-  display:flex;
+.main {
+  display: flex;
   flex-direction: row;
-  height:100%
+  height: 100%;
 }
 
 :root {
@@ -27,8 +26,13 @@
   --themeSecondary: #505661;
   --themeTertiary: #7644c0;
   --themeAccent: rgba(121, 82, 179, 0.25);
-  --themeAccent2:#2d323b;
+  --themeAccent2: #2d323b;
   --borderRadius: 0.35rem;
+}
+
+::selection {
+  background-color: var(--themeTertiary);
+  color: lightgray;
 }
 
 .sidebar {
