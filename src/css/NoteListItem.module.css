@@ -41,7 +41,7 @@
 .listItem:hover {
   background-color: var(--themeAccent);
   text-decoration: none;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.55);
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.35);
 }
 
 .activeItem,
@@ -49,7 +49,7 @@
   background-image: linear-gradient(to right, #5d2ea3, #7644c0);
   background-color: var(--themeTertiary);
   color: white;
-  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.55);
+  box-shadow: 2px 3px 5px rgba(0, 0, 0, 0.35);
 }
 
 .itemTitleRow {
