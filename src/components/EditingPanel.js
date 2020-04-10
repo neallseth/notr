@@ -22,12 +22,14 @@ function EditingPanel(props) {
             className={styles.titleInput}
             type="text"
             placeholder="Edit title..."
+            spellCheck="false"
             value={props.item.title}
             onChange={onTitleChange}
           ></input>
           <textarea
             className={styles.contentInput}
             placeholder="Edit contents..."
+            spellCheck="false"
             value={props.item.contents}
             onChange={onContentsChange}
           ></textarea>

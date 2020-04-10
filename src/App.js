@@ -16,7 +16,7 @@ class App extends React.Component {
     activeID: null,
     notes: [],
     savedNotes: [],
-    toasts: []
+    toast: {}
   };
 
   filterBySearch(data) {
@@ -118,12 +118,8 @@ class App extends React.Component {
   }
 
   showToast(type, message) {
-    let toasts = JSON.parse(JSON.stringify(this.state.toasts));
-    const id = toasts.length + 1;
-    toasts.push({ id, type, message })
-    this.setState({ toasts });
-    const removedToast = this.state.toasts.filter(toast=>toast.id!==id)
-    setTimeout(() => this.setState({toasts:removedToast}),2500);
+    this.setState({ toast: {type, message } });
+    setTimeout(() => this.setState({toast:{}}),2500);
   }
 
   componentDidMount() {
@@ -190,9 +186,7 @@ class App extends React.Component {
           </div>
 
         </div>
-       {this.state.toasts.map(item=>{
-         return <Toast key={item.id} type={item.type} message={item.message}></Toast>
-       })}
+       {Object.keys(this.state.toast).length ? <Toast type={this.state.toast.type} message={this.state.toast.message}></Toast>:null}
        
 
       </div>
