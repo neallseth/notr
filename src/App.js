@@ -1,13 +1,13 @@
 import React from "react";
 
-import "./css/Base.css"
+import "./css/Base.css";
 import "./css/App.css";
-import cx from 'classnames'
+import cx from "classnames";
 
 import NoteList from "./components/NoteList";
 import EditingPanel from "./components/EditingPanel";
 import NavBar from "./components/NavBar";
-import Toast from "./components/Toast"
+import Toast from "./components/Toast";
 
 class App extends React.Component {
   state = {
@@ -16,12 +16,12 @@ class App extends React.Component {
     activeID: null,
     notes: [],
     savedNotes: [],
-    toast: {}
+    toast: {},
   };
 
   filterBySearch(data) {
     const { searchQuery } = this.state;
-    const filtered = this.state.notes.filter(item => {
+    const filtered = this.state.notes.filter((item) => {
       return (
         item.title.toUpperCase().search(searchQuery.toUpperCase()) > -1 ||
         item.contents.toUpperCase().search(searchQuery.toUpperCase()) > -1
@@ -39,9 +39,9 @@ class App extends React.Component {
   }
 
   handleItemDelete() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       const filtered = prevState.notes.filter(
-        item => item.id !== prevState.activeID
+        (item) => item.id !== prevState.activeID
       );
       return { notes: filtered };
     }, this.showToast("danger", "Note deleted!"));
@@ -49,7 +49,7 @@ class App extends React.Component {
   }
 
   handleItemCreate() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       let maxID = 0;
       if (prevState.notes.length > 0) {
         for (let note of prevState.notes) {
@@ -63,7 +63,7 @@ class App extends React.Component {
         id: maxID + 1,
         title: "",
         contents: "",
-        date: new Date().toLocaleDateString()
+        date: new Date().toLocaleDateString(),
       };
       const newNotes = [newItem, ...prevState.notes];
       return { notes: newNotes };
@@ -74,31 +74,34 @@ class App extends React.Component {
   handleSave() {
     localStorage.setItem("notes", JSON.stringify(this.state.notes));
     const savedNotes = localStorage.getItem("notes");
-    this.setState({
-      savedNotes: JSON.parse(savedNotes),
-      notes: JSON.parse(savedNotes)
-    }, this.showToast("success", "Notes saved!"));
+    this.setState(
+      {
+        savedNotes: JSON.parse(savedNotes),
+        notes: JSON.parse(savedNotes),
+      },
+      this.showToast("success", "Notes saved!")
+    );
   }
 
   handleNoteEdit(newItem) {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       let notes = [...prevState.notes];
       const newDate = new Date().toLocaleDateString();
       newItem.date = newDate;
-      const editedIndex = notes.findIndex(item => item.id === newItem.id);
+      const editedIndex = notes.findIndex((item) => item.id === newItem.id);
       notes.splice(editedIndex, 1, newItem);
       return { notes };
     });
   }
 
   handleSidebarToggle() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       return { sidebarOpen: !prevState.sidebarOpen };
     });
   }
 
   setFirstItemActive() {
-    this.setState(prevState => {
+    this.setState((prevState) => {
       if (prevState.notes.length > 0) {
         return { activeID: prevState.notes[0].id };
       } else {
@@ -108,18 +111,18 @@ class App extends React.Component {
   }
 
   changeDetected() {
-    const notes = this.state.notes.map(note => [note.title, note.contents]);
-    const savedNotes = this.state.savedNotes.map(note => [
+    const notes = this.state.notes.map((note) => [note.title, note.contents]);
+    const savedNotes = this.state.savedNotes.map((note) => [
       note.title,
-      note.contents
+      note.contents,
     ]);
 
     return JSON.stringify(notes) !== JSON.stringify(savedNotes);
   }
 
   showToast(type, message) {
-    this.setState({ toast: {type, message } });
-    setTimeout(() => this.setState({toast:{}}),2500);
+    this.setState({ toast: { type, message } });
+    setTimeout(() => this.setState({ toast: {} }), 2500);
   }
 
   componentDidMount() {
@@ -127,23 +130,23 @@ class App extends React.Component {
     const initNotes = savedNotes?.length
       ? savedNotes
       : [
-        {
-          id: 1,
-          title: "Welcome to Notr",
-          contents: "Hi, thanks for checking out Notr!",
-          date: new Date().toLocaleDateString()
-        }
-      ];
+          {
+            id: 1,
+            title: "Welcome to Notr",
+            contents: "Hi, thanks for checking out Notr!",
+            date: new Date().toLocaleDateString(),
+          },
+        ];
     this.setState({
       notes: JSON.parse(JSON.stringify(initNotes)),
-      savedNotes: JSON.parse(JSON.stringify(initNotes))
+      savedNotes: JSON.parse(JSON.stringify(initNotes)),
     });
     this.setFirstItemActive();
   }
 
   render() {
     const [item] = this.state.notes.filter(
-      item => item.id === this.state.activeID
+      (item) => item.id === this.state.activeID
     );
 
     const filteredNotes = this.filterBySearch(this.state.notes);
@@ -162,7 +165,10 @@ class App extends React.Component {
 
         <div className="main">
           <div
-            className={cx('sidebar',{'sidebar-active':this.state.sidebarOpen,'sidebar-inactive':!this.state.sidebarOpen})}
+            className={cx("sidebar", {
+              "sidebar-active": this.state.sidebarOpen,
+              "sidebar-inactive": !this.state.sidebarOpen,
+            })}
           >
             <NoteList
               items={filteredNotes}
@@ -176,7 +182,10 @@ class App extends React.Component {
             ></NoteList>
           </div>
           <div
-            className={cx('content-area',{'content-area-shared':this.state.sidebarOpen,'content-area':!this.state.sidebarOpen})}
+            className={cx("content-area", {
+              "content-area-shared": this.state.sidebarOpen,
+              "content-area": !this.state.sidebarOpen,
+            })}
           >
             <EditingPanel
               item={item}
@@ -184,11 +193,13 @@ class App extends React.Component {
               onSidebarToggle={this.handleSidebarToggle.bind(this)}
             ></EditingPanel>
           </div>
-
         </div>
-       {Object.keys(this.state.toast).length ? <Toast type={this.state.toast.type} message={this.state.toast.message}></Toast>:null}
-       
-
+        {Object.keys(this.state.toast).length ? (
+          <Toast
+            type={this.state.toast.type}
+            message={this.state.toast.message}
+          ></Toast>
+        ) : null}
       </div>
     );
   }

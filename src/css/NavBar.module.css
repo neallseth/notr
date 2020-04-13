@@ -1,26 +1,32 @@
-.bar{
-    background-color: var(--themeSecondary);
-    min-height:3.5rem;
-    padding:.5rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1071;
-    box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.85)
+.bar {
+  background-color: var(--themeSecondary);
+  min-height: 3rem;
+  padding: 0.5rem 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1071;
+  box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.85);
 }
 
 .optionBtn {
-    font-size: 1.5rem;
-margin-left: 1rem;
-margin-right:1rem;  
+  height: 21px;
+  width: 21px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  color: lightgray;
+  cursor: pointer;
 }
 
-  .optionBtnDeactivated {
-    color: grey;
-    cursor: default;
-  }
-  
-  
-  .optionBtn:hover {
-    filter: drop-shadow(0 0 5px var(--themeSecondary));
-  }
+.optionBtnDeactivated {
+  color: grey;
+  cursor: default;
+}
+
+.optionBtn:hover {
+  filter: drop-shadow(0 0 5px var(--themeSecondary));
+}
+
+.optionBtnGroup {
+  display: flex;
+}

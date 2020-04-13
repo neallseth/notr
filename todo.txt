@@ -1,5 +1,7 @@
 order notes in descending order by date (create animation to re-order)
 
+switch to use different icons between success/error/warn toasts
+
 add search icon to input box
 
 placeholder to in panel view when no notes exist
@@ -10,8 +12,6 @@ implement export to csv (add settings modal to add this option)
 
 rich text editor (draft.js, quill, etc.)
 
-beautify css/design
-
 modify conditional component rendering to use classnames module (cx syntax)
 
 animations with framer motion or transition group
@@ -20,4 +20,4 @@ add color gradient and background shadow to toast notifications
 
 add shadow to list items
 
-fix hanging toast bug (occasionally not removed from state)
+fix handling of onclick for delete button (on app component level, when activeID == null, do nothing)
