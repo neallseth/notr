@@ -7,6 +7,26 @@
   padding-top: 1rem;
 }
 
+.noContentsContainer {
+  display: flex;
+  flex-direction: column;
+  color: lightgray;
+  align-items: center;
+  height: 100%;
+}
+
+.noContentsText {
+  font-weight: normal;
+  font-size: 1.25rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.blankCanvas {
+  height: 75%;
+  width: 75%;
+}
+
 .titleInput {
   width: 75%;
   background-color: transparent;
@@ -49,7 +69,6 @@
   border-color: var(--themeTertiary);
   box-shadow: 0 0 0 3px var(--themeAccent);
 }
-
 
 @media only screen and (max-width: 600px) {
   .titleInput {

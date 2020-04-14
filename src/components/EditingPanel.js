@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/EditingPanel.module.css";
+import { ReactComponent as BlankCanvas } from "../assets/illustrations/blank_canvas.svg";
 
 function EditingPanel(props) {
   function onTitleChange(e) {
@@ -34,6 +35,15 @@ function EditingPanel(props) {
             onChange={onContentsChange}
           ></textarea>
         </>
+      );
+    } else {
+      return (
+        <div className={styles.noContentsContainer}>
+          <h1 className={styles.noContentsText}>
+            Compose a note to get started
+          </h1>
+          <BlankCanvas className={styles.blankCanvas} />
+        </div>
       );
     }
   }

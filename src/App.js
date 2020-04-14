@@ -145,7 +145,7 @@ class App extends React.Component {
   }
 
   render() {
-    const [item] = this.state.notes.filter(
+    const [activeItem] = this.state.notes.filter(
       (item) => item.id === this.state.activeID
     );
 
@@ -160,6 +160,7 @@ class App extends React.Component {
           onItemDelete={this.handleItemDelete.bind(this)}
           onItemCreate={this.handleItemCreate.bind(this)}
           activeID={this.state.activeID}
+          activeItem={activeItem}
           onSave={this.handleSave.bind(this)}
         ></NavBar>
 
@@ -188,7 +189,7 @@ class App extends React.Component {
             })}
           >
             <EditingPanel
-              item={item}
+              item={activeItem}
               onNoteEdit={this.handleNoteEdit.bind(this)}
               onSidebarToggle={this.handleSidebarToggle.bind(this)}
             ></EditingPanel>

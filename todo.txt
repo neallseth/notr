@@ -12,12 +12,6 @@ implement export to csv (add settings modal to add this option)
 
 rich text editor (draft.js, quill, etc.)
 
-modify conditional component rendering to use classnames module (cx syntax)
-
 animations with framer motion or transition group
 
-add color gradient and background shadow to toast notifications
-
-add shadow to list items
-
-fix handling of onclick for delete button (on app component level, when activeID == null, do nothing)
+fix editor container height issue when svg in view

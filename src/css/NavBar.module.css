@@ -30,3 +30,7 @@
 .optionBtnGroup {
   display: flex;
 }
+
+.noteDetails {
+  color: lightgray;
+}

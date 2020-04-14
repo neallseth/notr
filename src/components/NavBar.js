@@ -10,19 +10,26 @@ function NavBar(props) {
   return (
     <header className={styles.bar}>
       <MenuIcon className={styles.optionBtn} onClick={props.onSidebarToggle} />
+      {/* <span className={styles.noteDetails}>
+        {props.activeItem?.title ? props.activeItem.title : null}
+      </span> */}
       <div className={styles.optionBtnGroup}>
         <TrashIcon
           className={cx(styles.optionBtn, {
             [styles.optionBtnDeactivated]: !props.activeID,
           })}
-          onClick={props.onItemDelete}
+          onClick={() => {
+            props.activeID ? props.onItemDelete() : (() => {})();
+          }}
         />
 
         <SaveIcon
           className={cx(styles.optionBtn, {
             [styles.optionBtnDeactivated]: !props.saveEnabled,
           })}
-          onClick={props.onSave}
+          onClick={() => {
+            props.saveEnabled ? props.onSave() : (() => {})();
+          }}
         />
 
         <ComposeIcon
