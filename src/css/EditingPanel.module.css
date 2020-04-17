@@ -70,6 +70,25 @@
   box-shadow: 0 0 0 3px var(--themeAccent);
 }
 
+.enter {
+  opacity: 0;
+}
+
+.enterActive {
+  opacity: 1;
+  transition: all 200ms ease-in-out;
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 200ms ease-in-out;
+  transform: translateX(25px);
+}
+
 @media only screen and (max-width: 600px) {
   .titleInput {
     width: 100%;

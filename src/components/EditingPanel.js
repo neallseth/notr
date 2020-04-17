@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../css/EditingPanel.module.css";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { ReactComponent as BlankCanvas } from "../assets/illustrations/blank_canvas.svg";
 
 function EditingPanel(props) {
@@ -36,7 +37,8 @@ function EditingPanel(props) {
           ></textarea>
         </>
       );
-    } else {
+    } else if (props.initialLoadComplete) {
+      console.log("no notes!  props.item: ", props.item);
       return (
         <div className={styles.noContentsContainer}>
           <h1 className={styles.noContentsText}>
@@ -47,7 +49,20 @@ function EditingPanel(props) {
       );
     }
   }
-  return <div className={styles.panel}>{getPanelView()}</div>;
+  return (
+    <SwitchTransition>
+      <CSSTransition
+        key={!props.item}
+        addEndListener={(node, done) =>
+          node.addEventListener("transitionend", done, false)
+        }
+        classNames={styles}
+      >
+        <div className={styles.panel}>{getPanelView()}</div>
+      </CSSTransition>
+    </SwitchTransition>
+  );
+  // return <div className={styles.panel}>{getPanelView()}</div>;
 }
 
 export default EditingPanel;

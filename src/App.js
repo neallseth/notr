@@ -17,6 +17,7 @@ class App extends React.Component {
     notes: [],
     savedNotes: [],
     toast: {},
+    initialLoadComplete: false,
   };
 
   filterBySearch(data) {
@@ -140,6 +141,7 @@ class App extends React.Component {
     this.setState({
       notes: JSON.parse(JSON.stringify(initNotes)),
       savedNotes: JSON.parse(JSON.stringify(initNotes)),
+      initialLoadComplete: true,
     });
     this.setFirstItemActive();
   }
@@ -192,6 +194,7 @@ class App extends React.Component {
               item={activeItem}
               onNoteEdit={this.handleNoteEdit.bind(this)}
               onSidebarToggle={this.handleSidebarToggle.bind(this)}
+              initialLoadComplete={this.state.initialLoadComplete}
             ></EditingPanel>
           </div>
         </div>
