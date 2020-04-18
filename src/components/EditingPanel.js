@@ -62,7 +62,6 @@ function EditingPanel(props) {
       </CSSTransition>
     </SwitchTransition>
   );
-  // return <div className={styles.panel}>{getPanelView()}</div>;
 }
 
 export default EditingPanel;

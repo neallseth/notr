@@ -61,3 +61,24 @@
   display: flex;
   width: 94%;
 }
+
+.enter {
+  opacity: 0;
+  transform: translateX(-100px);
+}
+
+.enterActive {
+  opacity: 1;
+  transition: all 300ms ease-in-out;
+  transform: translateX(0px);
+}
+
+.exit {
+  opacity: 1;
+}
+
+.exitActive {
+  opacity: 0;
+  transition: all 300ms ease-in-out;
+  transform: translateX(-100px);
+}
