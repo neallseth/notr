@@ -37,6 +37,9 @@ class App extends React.Component {
 
   handleItemClick(newActiveID) {
     this.setState({ activeID: newActiveID });
+    if (window.innerWidth <= 600) {
+      this.setState({ sidebarOpen: false });
+    }
   }
 
   handleItemDelete() {
@@ -70,6 +73,9 @@ class App extends React.Component {
       return { notes: newNotes };
     });
     this.setFirstItemActive();
+    if (window.innerWidth <= 600) {
+      this.setState({ sidebarOpen: false });
+    }
   }
 
   handleSave() {

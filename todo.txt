@@ -14,4 +14,8 @@ rich text editor (draft.js, quill, etc.)
 
 animations with framer motion or transition group
 
+fix setState to match recommended prevProps syntax
+
+fix handleItemCreate to use Array.reduce to find max ID
+
 fix editor container height issue when svg in view
