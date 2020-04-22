@@ -64,8 +64,8 @@
 
 .enter {
   opacity: 0;
-  transform: translateX(-100px);
-  max-height: 3rem;
+  transform: translateX(-200px);
+  max-height: 0rem;
 }
 
 .enterActive {
@@ -83,6 +83,14 @@
 .exitActive {
   opacity: 0;
   transition: all 300ms ease-in-out;
-  transform: translateX(-100px);
-  max-height: 3rem;
+  transform: translateX(-200px);
+  max-height: 0rem;
+}
+
+.exit div {
+  padding: 0;
+}
+
+.exitActive div {
+  padding: 0;
 }
