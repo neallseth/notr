@@ -38,7 +38,6 @@ function EditingPanel(props) {
         </>
       );
     } else if (props.initialLoadComplete) {
-      console.log("no notes!  props.item: ", props.item);
       return (
         <div className={styles.noContentsContainer}>
           <h1 className={styles.noContentsText}>
@@ -52,7 +51,7 @@ function EditingPanel(props) {
   return (
     <SwitchTransition>
       <CSSTransition
-        key={!props.item}
+        key={true}
         addEndListener={(node, done) =>
           node.addEventListener("transitionend", done, false)
         }
