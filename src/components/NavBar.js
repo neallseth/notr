@@ -10,9 +10,6 @@ function NavBar(props) {
   return (
     <header className={styles.bar}>
       <MenuIcon className={styles.optionBtn} onClick={props.onSidebarToggle} />
-      {/* <span className={styles.noteDetails}>
-        {props.activeItem?.title ? props.activeItem.title : null}
-      </span> */}
       <div className={styles.optionBtnGroup}>
         <TrashIcon
           className={cx(styles.optionBtn, {

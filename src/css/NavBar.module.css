@@ -10,21 +10,19 @@
 }
 
 .optionBtn {
-  height: 21px;
-  width: 21px;
+  height: 1.5rem;
+  width: 1.5rem;
   margin-left: 1rem;
   margin-right: 1rem;
   color: lightgray;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 3px black);
 }
 
 .optionBtnDeactivated {
   color: grey;
   cursor: default;
-}
-
-.optionBtn:hover {
-  filter: drop-shadow(0 0 5px var(--themeSecondary));
+  filter: none;
 }
 
 .optionBtnGroup {
@@ -33,4 +31,11 @@
 
 .noteDetails {
   color: lightgray;
+}
+
+@media only screen and (max-width: 600px) {
+  .optionBtn {
+    height: 1.75rem;
+    width: 1.75rem;
+  }
 }

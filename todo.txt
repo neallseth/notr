@@ -4,8 +4,6 @@ switch to use different icons between success/error/warn toasts
 
 add search icon to input box
 
-placeholder to in panel view when no notes exist
-
 add web speech api to text input for notes
 
 implement export to csv (add settings modal to add this option)
@@ -15,6 +13,8 @@ rich text editor (draft.js, quill, etc.)
 animations with framer motion or transition group
 
 fix setState to match recommended prevProps syntax
+
+fix animation of editor on mobile
 
 fix handleItemCreate to use Array.reduce to find max ID
 
