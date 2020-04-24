@@ -51,13 +51,7 @@ function EditingPanel(props) {
   return (
     <SwitchTransition>
       <CSSTransition
-        key={
-          window.innerWidth >= 600
-            ? !props.item
-            : props.sidebarOpen
-            ? true
-            : !props.item
-        }
+        key={window.innerWidth >= 600 ? !props.item : true}
         addEndListener={(node, done) =>
           node.addEventListener("transitionend", done, false)
         }
