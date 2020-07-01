@@ -1,5 +1,7 @@
 order notes in descending order by date (create animation to re-order)
 
+increase size of navbar + icons
+
 switch to use different icons between success/error/warn toasts
 
 add search icon to input box
